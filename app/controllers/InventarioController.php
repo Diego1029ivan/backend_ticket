@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\Inventario;
+//importar tcpdf para generar pdf
 
 class InventarioController extends Controller {
 
@@ -93,11 +94,12 @@ public function agregarinventario() {
                 -100, 			// Height
                 'black', 		// Color del codigo
                 array(0, 0, 0, 0)	// Padding
-            );
+            )->setBackgroundColor('white'); // Color de fondo
 
-            $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
+
+            $imageData = $bobj->getPngData();// Obtenemos el resultado en formato PNG
             header('Content-Type: image/png');
-            echo  $imageData;
+        echo  $imageData;
     }
 
     public function codigoQR($codigo) {
@@ -119,9 +121,11 @@ public function agregarinventario() {
             array(-2, -2, -2, -2)           // Padding
             )->setBackgroundColor('white'); // Color de fondo
 
+
         $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
         header('Content-Type: image/png');
         echo  $imageData;
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }
+
 }
