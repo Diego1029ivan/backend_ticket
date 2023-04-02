@@ -39,7 +39,9 @@ app()->setErrorHandler(function ($e = null) {
 | the controller namespace first.
 |
 */
+
 app()->setNamespace("\App\Controllers");
 
 // You can break up routes into individual files
 require __DIR__ . "/_app.php";
+

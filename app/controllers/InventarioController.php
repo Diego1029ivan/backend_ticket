@@ -105,7 +105,7 @@ public function agregarinventario() {
             echo  $imageData;
     }
 
-    
+
     public function codigoQR($codigo) {
         $inventario = Inventario::where('codigo', $codigo)->first();
         //validar si el producto existe
@@ -131,7 +131,7 @@ public function agregarinventario() {
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }
 
-    
+
 
 
     public function ticketPDF($codigo){
@@ -143,15 +143,52 @@ public function agregarinventario() {
         ob_start();
         $inventario = Inventario::where('codigo', $codigo)->first();
         //echo $inventario;
-        
-        
+
+
         $html = view('generar_ticket',['codigo'=>$codigo,
                                        'inventario'=>$inventario]);
         $dompdf->loadHtml($html);
         $dompdf->render();
         header("Content-type: application/pdf");
         header("Content-Disposition: inline; filename=ticket".$codigo.".pdf");
-        
+
         echo $dompdf->output();
+    }
+
+     public function generarPdf($codigo) {
+        $inventario = Inventario::where('codigo', $codigo)->first();
+     $inventariobR = (string)$inventario->codigo;
+
+        $barcode = new \Com\Tecnick\Barcode\Barcode();
+
+        $bobj = $barcode->getBarcodeObj(
+        "PDF417", 			// Tipo de Barcode o Qr
+            $inventariobR,          // Datos
+           -2, 			// Width
+                -5, 			// Height
+            'black',                        // Color del codigo
+            array(-2, -2, -2, -2)           // Padding
+            )->setBackgroundColor('white'); // Color de fondo
+
+        $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
+        header('Content-Type: image/png');
+
+    // Crear el archivo PDF con Dompdf
+        $options = new Options();
+        $options->set('isRemoteEnabled',TRUE);
+        $dompdf = new Dompdf($options);
+        $dompdf->setPaper('b7', 'portrait');
+        ob_start();
+
+// Agregar el contenido del PDF
+$html = '<h1>UNSM</h1>';
+$html .= '<img src="data:image/png;base64,' . base64_encode($imageData) . '"/>';
+$html .= '<span>'.$inventario['codigo'].'</span>';
+
+$dompdf->loadHtml($html);
+$dompdf->render();
+
+// Descargar el archivo PDF generado
+$dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
     }
 }

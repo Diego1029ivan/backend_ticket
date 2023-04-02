@@ -22,7 +22,7 @@ $medidaTicket = 180;
             margin: 2px;
         }
 
-       
+
         .centrado {
             text-align: center;
             align-content: center;
@@ -36,7 +36,7 @@ $medidaTicket = 180;
             width:50%;
         }
         .qr{
-            
+
         }
 
         * {
@@ -51,7 +51,7 @@ $medidaTicket = 180;
 
         body {
             text-align: center;
-            
+
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
@@ -59,26 +59,26 @@ $medidaTicket = 180;
 
 <body>
     <div class="ticket centrado">
-        
+
         <h2><?php echo $inventario->nombre ?></h2>
         <h2><?php echo $inventario->fecha ?></h2>
         <div class="row">
             <div class="col-3">
-            <?php $src1="http://localhost:8012/backend_ticket/inventarioBarra/".$codigo;
+            <?php $src1="http://localhost/backend_ticket/inventarioBarra/".$codigo;
             echo '<img class="barras" src="'.$src1.'" alt="">';
-            ?> 
+            ?>
             <h4><?php echo $codigo ?></h4>
             </div>
 
             <div class="col-4">
-            <?php $src2="http://localhost:8012/backend_ticket/inventarioQR/".$codigo;
+            <?php $src2="http://localhost/backend_ticket/inventarioQR/".$codigo;
             echo '<img class="qr" src="'.$src2.'" alt="">';
-            ?> 
+            ?>
             </div>
         </div>
-       
-        
-        
+
+
+
         <!-- <p class="centrado">¡GRACIAS POR SU COMPRA!
             <br>parzibyte.me</p> -->
     </div>
