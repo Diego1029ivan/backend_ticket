@@ -3,13 +3,8 @@
 namespace App\Controllers;
 use App\Models\Inventario;
 
-
-
-include "vendor/autoload.php";
-
-
 class InventarioController extends Controller {
-    
+
     public function index() {
         $inventarios = Inventario::all();
         response()->json($inventarios);
@@ -82,7 +77,7 @@ public function agregarinventario() {
     //functio permite crear env
     public function codigoBarras($codigo) {
 
-        
+
           $inventario = Inventario::where('codigo', $codigo)->first();
   //convertir a string
         if (empty($inventario)) {
@@ -101,7 +96,7 @@ public function agregarinventario() {
             );
 
             $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
-            header('Content-Type: image/png');    
+            header('Content-Type: image/png');
             echo  $imageData;
     }
 
@@ -112,20 +107,20 @@ public function agregarinventario() {
             return  response()->json(["message" => "Inventario no encontrado"], 404);
       }
       $inventariobR = (string)$inventario->codigo;
-      
+
         $barcode = new \Com\Tecnick\Barcode\Barcode();
 
         $bobj = $barcode->getBarcodeObj(
             'QRCODE,H',                     // Tipo de Barcode o Qr
             $inventariobR,          // Datos
-            -6,                             // Width 
+            -6,                             // Width
             -6,                             // Height
             'black',                        // Color del codigo
             array(-2, -2, -2, -2)           // Padding
             )->setBackgroundColor('white'); // Color de fondo
-        
+
         $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
-        header('Content-Type: image/png');    
+        header('Content-Type: image/png');
         echo  $imageData;
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }
