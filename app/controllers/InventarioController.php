@@ -3,6 +3,11 @@
 namespace App\Controllers;
 use App\Models\Inventario;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+include_once "./vendor/autoload.php";
+
 class InventarioController extends Controller {
 
     public function index() {
@@ -87,10 +92,10 @@ public function agregarinventario() {
          $barcode = new \Com\Tecnick\Barcode\Barcode();
 
             $bobj = $barcode->getBarcodeObj(
-                "C39", 			// Tipo de Barcode o Qr
+                "PDF417", 			// Tipo de Barcode o Qr
                 $inventariobR, 	// Datos
                 -2, 			// Width
-                -100, 			// Height
+                -5, 			// Height
                 'black', 		// Color del codigo
                 array(0, 0, 0, 0)	// Padding
             );
@@ -123,5 +128,19 @@ public function agregarinventario() {
         header('Content-Type: image/png');
         echo  $imageData;
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
+    }
+
+    public function ticketPDF(){
+        $dompdf = new Dompdf();
+        $dompdf->setPaper('b7', 'portrait');
+        ob_start();
+        
+        $html = view('generar_ticket');
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+        header("Content-type: application/pdf");
+        header("Content-Disposition: inline; filename=ticket.pdf");
+        
+        echo $dompdf->output();
     }
 }
