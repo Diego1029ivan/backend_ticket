@@ -105,6 +105,7 @@ public function agregarinventario() {
             echo  $imageData;
     }
 
+    
     public function codigoQR($codigo) {
         $inventario = Inventario::where('codigo', $codigo)->first();
         //validar si el producto existe
@@ -118,8 +119,8 @@ public function agregarinventario() {
         $bobj = $barcode->getBarcodeObj(
             'QRCODE,H',                     // Tipo de Barcode o Qr
             $inventariobR,          // Datos
-            -6,                             // Width
-            -6,                             // Height
+            -2,                             // Width
+            -2,                             // Height
             'black',                        // Color del codigo
             array(-2, -2, -2, -2)           // Padding
             )->setBackgroundColor('white'); // Color de fondo
@@ -130,16 +131,26 @@ public function agregarinventario() {
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }
 
-    public function ticketPDF(){
-        $dompdf = new Dompdf();
+    
+
+
+    public function ticketPDF($codigo){
+
+        $options = new Options();
+        $options->set('isRemoteEnabled',TRUE);
+        $dompdf = new Dompdf($options);
         $dompdf->setPaper('b7', 'portrait');
         ob_start();
+        $inventario = Inventario::where('codigo', $codigo)->first();
+        //echo $inventario;
         
-        $html = view('generar_ticket');
+        
+        $html = view('generar_ticket',['codigo'=>$codigo,
+                                       'inventario'=>$inventario]);
         $dompdf->loadHtml($html);
         $dompdf->render();
         header("Content-type: application/pdf");
-        header("Content-Disposition: inline; filename=ticket.pdf");
+        header("Content-Disposition: inline; filename=ticket".$codigo.".pdf");
         
         echo $dompdf->output();
     }
