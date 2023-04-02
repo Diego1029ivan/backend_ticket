@@ -10,3 +10,8 @@ app()->delete("/inventario/{id}", "InventarioController@borrarinventario");
 app()->put("/inventario/{id}", "InventarioController@actualizarinventario");
 app()->get("inventarioBarra/{id}", "InventarioController@codigoBarras");
 app()->get("inventarioQR/{id}", "InventarioController@codigoQR");
+app()->get("/inventarioBarra/{id}", "InventarioController@codigoBarras");
+app()->get("/inventarioQR/{id}", "InventarioController@codigoQR");
+app()->get("/ticketPDF", "InventarioController@ticketPDF");
+
+app()->get('/ticketPDF/{codigo}', 'InventarioController@ticketPDF');
