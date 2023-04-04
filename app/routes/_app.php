@@ -12,7 +12,6 @@ app()->get("inventarioBarra/{id}", "InventarioController@codigoBarras");
 app()->get("inventarioQR/{id}", "InventarioController@codigoQR");
 app()->get("/inventarioBarra/{id}", "InventarioController@codigoBarras");
 app()->get("/inventarioQR/{id}", "InventarioController@codigoQR");
-app()->get("/ticketPDF", "InventarioController@ticketPDF");
 
 app()->get('/ticketPDF/{codigo}', 'InventarioController@ticketPDF');
 app()->get('/ticketapi/{codigo}', 'InventarioController@generarPdf');
