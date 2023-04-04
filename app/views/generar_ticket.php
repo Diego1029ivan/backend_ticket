@@ -64,14 +64,14 @@ $medidaTicket = 180;
         <h2><?php echo $inventario->fecha ?></h2>
         <div class="row">
             <div class="col-3">
-            <?php $src1="http://localhost/backend_ticket/inventarioBarra/".$codigo;
+            <?php $src1="http://localhost:8012/backend_ticket/inventarioBarra/".$codigo;
             echo '<img class="barras" src="'.$src1.'" alt="">';
             ?>
             <h4><?php echo $codigo ?></h4>
             </div>
 
             <div class="col-4">
-            <?php $src2="http://localhost/backend_ticket/inventarioQR/".$codigo;
+            <?php $src2="http://localhost:8012/backend_ticket/inventarioQR/".$codigo;
             echo '<img class="qr" src="'.$src2.'" alt="">';
             ?>
             </div>
