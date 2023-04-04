@@ -62,6 +62,10 @@ img {
     top: 0;
 
 }
+.imagen-barras{
+    width: 50px;
+    
+}
     </style>
 
 </head>
@@ -75,15 +79,21 @@ img {
     <div>
         <img  src="https://unsm.edu.pe/wp-content/uploads/2016/10/cropped-logo-ICONO.png" alt="logo" style="max-width:14%;"></div>
     </div>
-        <div class="ticket-container">
-            <div class="col-3">
-            <?php $src1="http://localhost:8012/backend_ticket/inventarioBarra/".$codigo;
+        <div class="ticket-container row">
+            <div class="imagen-barras col">
+            <?php $src1="http://localhost:8012/backend_ticket/inventarioBarraExcel/".$codigo;
             echo '<img  src="'.$src1.'" alt="codigo barra">';
             ?>
             </div>
             <div class="ticket-position">
             <h4 class="ticket-codigo"><?php echo $codigo ?></h4>
-        </div>
+            <!-- <hr> -->
+            <!-- <h4 class="ticket-codigo">fecha adquisición <?php //echo $dia."-".$mes."-".$year ?></h4> -->
+            </div>
+            <div class="imagen-barras col"></div>
+            <?php $src1="http://localhost:8012/backend_ticket/inventarioQRExcel/".$codigo;
+            echo '<img  src="'.$src1.'" alt="codigo barra">';
+            ?>
 
         </div>
     </div>

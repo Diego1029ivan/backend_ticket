@@ -78,7 +78,7 @@ public function agregarinventario() {
         ]);
         response()->json(["message" => "Invetario actualizado"]);
     }
-
+/*======================Generar barras====================================*/
     //functio permite crear env
     public function codigoBarras($codigo) {
 
@@ -105,7 +105,25 @@ public function agregarinventario() {
             echo  $imageData;
     }
 
+    public function codigoBarrasExcel($codigo) {
 
+       $barcode = new \Com\Tecnick\Barcode\Barcode();
+
+          $bobj = $barcode->getBarcodeObj(
+              "PDF417", 			// Tipo de Barcode o Qr
+              $codigo, 	// Datos
+              -2, 			// Width
+              -5, 			// Height
+              'black', 		// Color del codigo
+              array(0, 0, 0, 0)	// Padding
+          );
+
+          $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
+          header('Content-Type: image/png');
+          echo  $imageData;
+  }
+
+/*======================Generar QR====================================*/
     public function codigoQR($codigo) {
         $inventario = Inventario::where('codigo', $codigo)->first();
         //validar si el producto existe
@@ -131,8 +149,27 @@ public function agregarinventario() {
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }
 
+    public function codigoQRExcel($codigo) {
+        
+        $barcode = new \Com\Tecnick\Barcode\Barcode();
+
+        $bobj = $barcode->getBarcodeObj(
+            'QRCODE,H',                     // Tipo de Barcode o Qr
+            $codigo,          // Datos
+            -2,                             // Width
+            -2,                             // Height
+            'black',                        // Color del codigo
+            array(-2, -2, -2, -2)           // Padding
+            )->setBackgroundColor('white'); // Color de fondo
+
+        $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
+        header('Content-Type: image/png');
+        echo  $imageData;
+        //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
+    }
 
 
+/*======================Generar ticket PDF====================================*/
 
     public function ticketPDF($codigo){
 
@@ -147,6 +184,26 @@ public function agregarinventario() {
 
         $html = view('generar_ticket',['codigo'=>$codigo,
                                        'inventario'=>$inventario]);
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+        header("Content-type: application/pdf");
+        header("Content-Disposition: inline; filename=ticket".$codigo.".pdf");
+
+        echo $dompdf->output();
+    }
+
+    public function ticketPDFExcel($codigo,$dia,$mes,$year){
+
+        $options = new Options();
+        $options->set('isRemoteEnabled',TRUE);
+        $dompdf = new Dompdf($options);
+        $dompdf->setPaper(array(-1, -1, 108, 72), 'portrait');
+        ob_start();
+        
+        $html = view('generar_ticket_excel',['codigo'=>$codigo,
+                                             'dia'=>$dia,
+                                             'mes'=>$mes,
+                                             'year'=>$year]);
         $dompdf->loadHtml($html);
         $dompdf->render();
         header("Content-type: application/pdf");
