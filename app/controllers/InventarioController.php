@@ -139,7 +139,7 @@ public function agregarinventario() {
         $options = new Options();
         $options->set('isRemoteEnabled',TRUE);
         $dompdf = new Dompdf($options);
-        $dompdf->setPaper('b7', 'portrait');
+        $dompdf->setPaper(array(-1, -1, 108, 72), 'portrait');
         ob_start();
         $inventario = Inventario::where('codigo', $codigo)->first();
         //echo $inventario;
@@ -161,14 +161,14 @@ public function agregarinventario() {
 
         $barcode = new \Com\Tecnick\Barcode\Barcode();
 
-        $bobj = $barcode->getBarcodeObj(
-        "PDF417", 			// Tipo de Barcode o Qr
-            $inventariobR,          // Datos
-           -2, 			// Width
+            $bobj = $barcode->getBarcodeObj(
+                "PDF417", 			// Tipo de Barcode o Qr
+                $inventariobR, 	// Datos
+                -2, 			// Width
                 -5, 			// Height
-            'black',                        // Color del codigo
-            array(-2, -2, -2, -2)           // Padding
-            )->setBackgroundColor('white'); // Color de fondo
+                'black', 		// Color del codigo
+                array(0, 0, 0, 0)	// Padding
+            );
 
         $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
         header('Content-Type: image/png');
@@ -177,15 +177,52 @@ public function agregarinventario() {
         $options = new Options();
         $options->set('isRemoteEnabled',TRUE);
         $dompdf = new Dompdf($options);
-        $dompdf->setPaper('b7', 'portrait');
+        // $dompdf->setPaper('b7', 'portrait');
+        $dompdf->setPaper(array(-1, -1, 108, 72), 'portrait');
         ob_start();
 
 // Agregar el contenido del PDF
-$html = '<h1>UNSM</h1>';
-$html .= '<img src="data:image/png;base64,' . base64_encode($imageData) . '"/>';
-$html .= '<span>'.$inventario['codigo'].'</span>';
+// styles css
+
+// $html='<body style="margin:0; padding: 0;box-sizing: border-box;">';
+// $html.='<div ">';
+// $html = '<span style="font-size: 4px;  padding: 0;">Universidad Nacional de San Martin</span>';
+// $html.='<div ">';
+// $html .= '<img  style="display: block;" src="data:image/png;base64,' . base64_encode($imageData) . '"/>';
+// $html .= '</div>';
+// $html .= '<span style="font-size: 4px;" >'.$inventario['codigo'].'</span>';
+// $html .= '</div>';
+// $html .= '</body>';
+
+$html='<body style="box-sizing: inherit;  font-family:  serif; margin: 0;  padding: 0;" >';
+  $html.='<div  style="max-width: 144px; width: 90%; margin: 8 auto;">';
+   $html.='<div style=" position:  relative; margin-bottom: 6px;">';
+  $html.='<div >';
+     $html.='<h1 style="font-size: 2px; position: absolute;     top: 0;">Universidad Nacional de San Martin</h1>';
+     $html.='</div>';
+    $html.='<div>';
+       $html.=' <img  src="https://unsm.edu.pe/wp-content/uploads/2016/10/cropped-logo-ICONO.png" alt="logo" style="max-width:10%;   max-width: 100%; display: block; height: auto; margin: 0 auto;   position: absolute;
+    top: 0;
+    right: 0;"></div>';
+     $html.='</div>';
+         $html.='<div  style=" display: flex;  align-items: center; justify-content: center;     flex-direction: column;    gap: 0;">';
+             $html.='<div class="col-3">';
+           $html .= '<img  style="  max-width: 100%;  display: block;  height: auto; margin: 0 auto; " src="data:image/png;base64,' . base64_encode($imageData) . '"/>';
+             $html .= '</div>';
+             $html .= '<div class="ticket-position">';
+    $html .= '<span style="font-size: 4px;" >'.$inventario['codigo'].'</span>';
+        $html .= ' </div>';
+
+         $html .= '</div>';
+     $html .= '</div>';
+ $html .= '</body>';
+
+
+
+
 
 $dompdf->loadHtml($html);
+
 $dompdf->render();
 
 // Descargar el archivo PDF generado
