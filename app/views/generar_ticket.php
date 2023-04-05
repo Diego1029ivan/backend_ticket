@@ -24,7 +24,7 @@ img {
 }
  .ticket {
            max-width: 11.6px;
-           max-height: 7px;
+           /* max-height: 7px; */
            height: 100%;
         margin: 1.6 auto;
         padding:  0 0.2px;
