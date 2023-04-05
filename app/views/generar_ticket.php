@@ -23,28 +23,21 @@ img {
   margin: 0 auto;
 }
  .ticket {
-           max-width: 144px;
-          width: 90%;
-        margin: 8 auto;
+           max-width: 11.6px;
+           /* max-height: 7px; */
+           height: 100%;
+        margin: 1.6 auto;
+        padding:  0 0.2px;
+        background-color: aqua;
         }
 .ticket-title{
-     font-size: 5px;
+     font-size: 0.4px;
 
-}
-.ticket-codigo{
-      font-size: 4px;
-      text-align: center;
-}
-.ticket-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0;
 }
 .ticket-container-superior{
  position:  relative;
- margin-bottom: 6px;
+ margin-bottom: 0.2px;
+
 }
 .ticket-container-superior img{
     position: absolute;
@@ -53,15 +46,28 @@ img {
 }
 .ticket-position{
     position: relative;
-    margin-top: -6px;
+    margin-top: -19.4px;
 }
 .ticket-position h4{
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
+      font-size: 0.4px;
+      text-align: center;
 
 }
+
+.col-3{
+    margin: 0 auto;
+    text-align: center;
+
+}
+.col-4{
+    margin: 2 auto;
+    text-align: center;
+}
+
     </style>
 
 </head>
@@ -73,18 +79,21 @@ img {
         <h1 class="ticket-title">Universidad Nacional de San Martin</h1>
     </div>
     <div>
-        <img  src="https://unsm.edu.pe/wp-content/uploads/2016/10/cropped-logo-ICONO.png" alt="logo" style="max-width:14%;"></div>
+        <img  src="https://unsm.edu.pe/wp-content/uploads/2016/10/cropped-logo-ICONO.png" alt="logo" style="max-width:10%;"></div>
     </div>
         <div class="ticket-container">
             <div class="col-3">
-            <?php $src1="http://localhost:8012/backend_ticket/inventarioBarra/".$codigo;
-            echo '<img  src="'.$src1.'" alt="codigo barra">';
+            <?php $src1="http://localhost/backend_ticket/inventarioBarra/".$codigo;
+            echo '<img  style="max-width:90%;" src="'.$src1.'" alt="codigo barra">';
             ?>
             </div>
             <div class="ticket-position">
-            <h4 class="ticket-codigo"><?php echo $codigo ?></h4>
+            <h4 class="ticket-codigo"><?php echo $codigo ?>  |  <?php echo $inventario->fecha ?></h4>
+
+            <h4 class="ticket-codigo"></h4>
         </div>
 
+        </div>
         </div>
     </div>
 </body>

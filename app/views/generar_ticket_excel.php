@@ -64,7 +64,7 @@ img {
 }
 .imagen-barras{
     width: 50px;
-    
+
 }
     </style>
 
@@ -91,7 +91,7 @@ img {
             <!-- <h4 class="ticket-codigo">fecha adquisición <?php //echo $dia."-".$mes."-".$year ?></h4> -->
             </div>
             <div class="imagen-barras col"></div>
-            <?php $src1="http://localhost:8012/backend_ticket/inventarioQRExcel/".$codigo;
+            <?php $src1="http://localhost:/backend_ticket/inventarioQRExcel/".$codigo;
             echo '<img  src="'.$src1.'" alt="codigo barra">';
             ?>
 
