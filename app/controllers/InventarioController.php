@@ -94,8 +94,8 @@ public function agregarinventario() {
             $bobj = $barcode->getBarcodeObj(
                 "PDF417", 			// Tipo de Barcode o Qr
                 $inventariobR, 	// Datos
-                -2, 			// Width
-                -5, 			// Height
+                -1, 			// Width
+                -3, 			// Height
                 'black', 		// Color del codigo
                 array(0, 0, 0, 0)	// Padding
             );
@@ -139,13 +139,15 @@ public function agregarinventario() {
         $options = new Options();
         $options->set('isRemoteEnabled',TRUE);
         $dompdf = new Dompdf($options);
-        $dompdf->setPaper(array(-1, -1, 108, 72), 'portrait');
+        //    $dompdf->setPaper(array(1, 1, 12, 8), 'portrait');
+        $dompdf->setPaper(array(0.2, -1, 12, 8), 'portrait');
         ob_start();
         $inventario = Inventario::where('codigo', $codigo)->first();
         //echo $inventario;
 
 
         $html = view('generar_ticket',['codigo'=>$codigo,
+
                                        'inventario'=>$inventario]);
         $dompdf->loadHtml($html);
         $dompdf->render();
