@@ -81,7 +81,7 @@ img {
     </div>
         <div class="ticket-container row">
             <div class="imagen-barras col">
-            <?php $src1="http://localhost:8012/backend_ticket/inventarioBarraExcel/".$codigo;
+            <?php $src1="http://localhost/backend_ticket/inventarioBarraExcel/".$codigo;
             echo '<img  src="'.$src1.'" alt="codigo barra">';
             ?>
             </div>
