@@ -23,12 +23,12 @@ img {
   margin: 0 auto;
 }
  .ticket {
-           max-width: 11.6px;
-           /* max-height: 7px; */
-           height: 100%;
-        margin: 1.6 auto;
-        padding:  0 0.2px;
-        background-color: aqua;
+        max-width: 11.6px;
+        /* max-height: 3px;  */
+           
+        margin:0 auto;
+        padding:  0 0.1px;
+        /* background-color: aqua; */
         }
 .ticket-title{
      font-size: 0.4px;
@@ -52,9 +52,9 @@ img {
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
-      font-size: 0.4px;
-      text-align: center;
+    top: 1px;
+    font-size: 0.4px;
+    text-align: center;
 
 }
 
@@ -74,26 +74,28 @@ img {
 
 <body>
     <div class="ticket ">
-     <div class="ticket-container-superior">
-        <div >
-        <h1 class="ticket-title">Universidad Nacional de San Martin</h1>
-    </div>
-    <div>
-        <img  src="https://unsm.edu.pe/wp-content/uploads/2016/10/cropped-logo-ICONO.png" alt="logo" style="max-width:10%;"></div>
-    </div>
-        <div class="ticket-container">
-            <div class="col-3">
-            <?php $src1="http://localhost/backend_ticket/inventarioBarra/".$codigo;
-            echo '<img  style="max-width:90%;" src="'.$src1.'" alt="codigo barra">';
-            ?>
-            </div>
-            <div class="ticket-position">
-            <h4 class="ticket-codigo"><?php echo $codigo ?>  |  <?php echo $inventario->fecha ?></h4>
+        <div class="ticket-container-superior">
+                <div >
+                    <h1 class="ticket-title">Universidad Nacional de San Martin</h1>
+                </div>
+                <div>
+                    <img  src="https://unsm.edu.pe/wp-content/uploads/2016/10/cropped-logo-ICONO.png" alt="logo" style="max-width:10%;"></div>
+                </div>
 
-            <h4 class="ticket-codigo"></h4>
-        </div>
+                <div class="ticket-container">
+                    
+                    <div class="col-3">
+                        <?php $src1="http://localhost:8012/backend_ticket/inventarioBarra/".$codigo;
+                        echo '<img  style="max-width:80%;max-height:50%;" src="'.$src1.'" alt="codigo barra">';
+                        ?>
+                    </div>
+                    <div class="ticket-position">
+                        <h4 class="ticket-codigo"><?php echo $codigo ?>  |  <?php echo $inventario->fecha ?></h4>
 
-        </div>
+                        <h4 class="ticket-codigo"></h4>
+                    </div>
+
+                </div>
         </div>
     </div>
 </body>

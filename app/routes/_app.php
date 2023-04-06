@@ -19,6 +19,7 @@ app()->get("/inventarioQRExcel/{id}", "InventarioController@codigoQRExcel");
 
 app()->get('/ticketPDF/{codigo}', 'InventarioController@ticketPDF');
 app()->get('/ticketPDFExcel/{codigo}/{dia}/{mes}/{year}', 'InventarioController@ticketPDFExcel');
+app()->get('/impresionExcel/{codigo}/{dia}/{mes}/{year}', 'InventarioController@impresionExcel');
 
 app()->get('/ticketapi/{codigo}', 'InventarioController@generarPdf');
 

@@ -7,7 +7,10 @@
   <!-- Cargar los estilos de Bootstrap -->
   
 <style>
-    
+    @page {
+    size: 10.5cm 2cm;
+    orientation: landscape;
+  }
     html {
     box-sizing: border-box;
  }
@@ -25,43 +28,46 @@ body{
    
 }
 .ticket-title h1{
-   padding-top:10%;
-   font-size:2.5px;
-   width:45%;
+   padding-top:5%;
+   font-size:5px;
+   
    text-align:center;
    
    
 }
 .img-log{
-    padding-top:10%;
-   width:10%;
+    padding-top:1%;
+   width:18px;
+   height:18px;
    position:absolute;
     top:0;
-    right:50%;
+    right:60%;
    
 }
 .imagen-barras{
-    margin-top:10px;
+    margin-top:5px;
 }
 .imagen-barras h4{
     width:50%;
-    font-size:3px;
+    font-size:5px;
+    padding-left:30%;
     text-align:center;
+    white-space: nowrap;
     
 }
 
 .imagen-barras img{
-    width:40%;
-    padding-left:10px;
+    width:60%;
+    padding-left:25%;
     
 }
 .ticket-qr{
-    padding-top: 10%;
+    padding-top: 10px;
     padding-left:10px;    
     position:absolute;
     top:0;
-    right:-8;
-    width:50%;
+    right:-10;
+    width:40%;
     
 }
 
@@ -93,7 +99,7 @@ body{
                         ?>
                         <h4><?php echo "1511"?></h4>
                         
-                        <h4>fecha adquisición <?php echo "25-01-2021" ?></h4> 
+                        <h4>Fecha de Adquisición <?php echo "25-01-2021" ?></h4> 
                     </div>
                     
                    

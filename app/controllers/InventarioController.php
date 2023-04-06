@@ -177,7 +177,7 @@ public function agregarinventario() {
         $options->set('isRemoteEnabled',TRUE);
         $dompdf = new Dompdf($options);
         //    $dompdf->setPaper(array(1, 1, 12, 8), 'portrait');
-        $dompdf->setPaper(array(0.2, -1, 12, 8), 'portrait');
+        $dompdf->setPaper(array(0.2, -1, 12, 5), 'portrait');
         ob_start();
         $inventario = Inventario::where('codigo', $codigo)->first();
         //echo $inventario;
@@ -287,4 +287,35 @@ $dompdf->render();
 // Descargar el archivo PDF generado
 $dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
     }
+
+
+   
+
+        public function impresionExcel($codigo,$dia,$mes,$year){
+
+            $options = new Options();
+            
+            $options->set('isRemoteEnabled',TRUE);
+            $dompdf = new Dompdf($options);
+            $dompdf->setPaper('10.5cm', '2cm', 'landscape');
+
+            
+            
+            
+            ob_start();
+            
+            $html = view('generar_ticket_excel2',['codigo'=>$codigo,
+                                                 'dia'=>$dia,
+                                                 'mes'=>$mes,
+                                                 'year'=>$year]);
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+            header("Content-type: application/pdf");
+            header("Content-Disposition: inline; filename=ticket".$codigo.".pdf");
+    
+            echo $dompdf->output();
+        }
+
+        
+    
 }
