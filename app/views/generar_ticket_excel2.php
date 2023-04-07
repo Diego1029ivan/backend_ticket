@@ -94,7 +94,7 @@ body{
 
                 <div class="">
                     <div class="imagen-barras">
-                        <?php $src1="http://localhost/backend_ticket/inventarioBarraExcel/68481";
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioBarraExcel/68481";
                         echo '<img  src="'.$src1.'" alt="codigo barra">';
                         ?>
                         <h4><?php echo "1511"?></h4>
@@ -108,7 +108,7 @@ body{
     </div>
     <div class="ticket-qr">
                     <div class="imagen-qr">
-                        <?php $src1="http://localhost/backend_ticket/inventarioQRExcel/11115";
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/11115";
                         echo '<img  src="'.$src1.'" alt="codigo barra">';
                         ?>
                     </div>

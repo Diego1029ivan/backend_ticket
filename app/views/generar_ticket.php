@@ -25,7 +25,7 @@ img {
  .ticket {
         max-width: 11.6px;
         /* max-height: 3px;  */
-           
+
         margin:0 auto;
         padding:  0 0.1px;
         /* background-color: aqua; */
@@ -83,9 +83,9 @@ img {
                 </div>
 
                 <div class="ticket-container">
-                    
+
                     <div class="col-3">
-                        <?php $src1="http://localhost:8012/backend_ticket/inventarioBarra/".$codigo;
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioBarra/".$codigo;
                         echo '<img  style="max-width:80%;max-height:50%;" src="'.$src1.'" alt="codigo barra">';
                         ?>
                     </div>

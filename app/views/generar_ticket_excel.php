@@ -81,7 +81,7 @@ body{
     </div>
         <div class="ticket-container row">
             <div class="imagen-barras col">
-            <?php $src1="http://localhost/backend_ticket/inventarioBarraExcel/".$codigo;
+            <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioBarraExcel/".$codigo;
             echo '<img  src="'.$src1.'" alt="codigo barra">';
             ?>
             </div>
@@ -91,7 +91,7 @@ body{
             <!-- <h4 class="ticket-codigo">fecha adquisición <?php //echo $dia."-".$mes."-".$year ?></h4> -->
             </div>
             <div class="imagen-barras col"></div>
-            <?php $src1="http://localhost:/backend_ticket/inventarioQRExcel/".$codigo;
+            <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/".$codigo;
             echo '<img  src="'.$src1.'" alt="codigo barra">';
             ?>
 
@@ -111,7 +111,7 @@ body{
 
                 <div class="">
                     <div class="imagen-barras">
-                        <?php $src1="http://localhost/backend_ticket/inventarioBarraExcel/68481";
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioBarraExcel/68481";
                         echo '<img  src="'.$src1.'" alt="codigo barra">';
                         ?>
                         <h4><?php echo "1511"?></h4>
@@ -125,7 +125,7 @@ body{
     </div>
     <div class="ticket-qr">
                     <div class="imagen-qr">
-                        <?php $src1="http://localhost/backend_ticket/inventarioQRExcel/11115";
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/11115";
                         echo '<img  src="'.$src1.'" alt="codigo barra">';
                         ?>
                     </div>
