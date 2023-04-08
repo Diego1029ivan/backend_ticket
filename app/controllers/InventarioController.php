@@ -291,30 +291,30 @@ $dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
 
    
 
-        public function impresionExcel($codigo,$dia,$mes,$year){
+    public function impresionExcel($codigo,$dia,$mes,$year){
 
-            $options = new Options();
-            
-            $options->set('isRemoteEnabled',TRUE);
-            $dompdf = new Dompdf($options);
-            $dompdf->setPaper('10.5cm', '2cm', 'landscape');
+        $options = new Options();
+        
+        $options->set('isRemoteEnabled',TRUE);
+        $dompdf = new Dompdf($options);
+        $dompdf->setPaper('10.5cm', '2cm', 'landscape');
 
-            
-            
-            
-            ob_start();
-            
-            $html = view('generar_ticket_excel2',['codigo'=>$codigo,
-                                                 'dia'=>$dia,
-                                                 'mes'=>$mes,
-                                                 'year'=>$year]);
-            $dompdf->loadHtml($html);
-            $dompdf->render();
-            header("Content-type: application/pdf");
-            header("Content-Disposition: inline; filename=ticket".$codigo.".pdf");
-    
-            echo $dompdf->output();
-        }
+        
+        
+        
+        ob_start();
+        
+        $html = view('generar_ticket_excel2',['codigo'=>$codigo,
+                                                'dia'=>$dia,
+                                                'mes'=>$mes,
+                                                'year'=>$year]);
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+        header("Content-type: application/pdf");
+        header("Content-Disposition: inline; filename=ticket".$codigo.".pdf");
+
+        echo $dompdf->output();
+    }
 
         
     

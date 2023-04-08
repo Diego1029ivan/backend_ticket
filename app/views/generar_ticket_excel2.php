@@ -28,8 +28,8 @@ body{
    
 }
 .ticket-title h1{
-   padding-top:5%;
-   font-size:5px;
+   padding-top:2%;
+   font-size:4.5px;
    
    text-align:center;
    
@@ -48,8 +48,9 @@ body{
     margin-top:5px;
 }
 .imagen-barras h4{
-    width:50%;
-    font-size:5px;
+    width:45%;
+    font-size:4px;
+    margin-bottom:-2px;
     padding-left:30%;
     text-align:center;
     white-space: nowrap;
@@ -94,12 +95,12 @@ body{
                     
                 <div class="">
                     <div class="imagen-barras">
-                        <?php $src1="http://localhost:8012/backend_ticket/inventarioBarraExcel/68481";
+                        <?php $src1="http://localhost:8012/backend_ticket/inventarioBarraExcel/".$codigo;
                         echo '<img  src="'.$src1.'" alt="codigo barra">';
                         ?>
-                        <h4><?php echo "1511"?></h4>
+                        <h4><?php echo $codigo ?></h4>
                         
-                        <h4>Fecha de Adquisición <?php echo "25-01-2021" ?></h4> 
+                        <h4>F.A. <?php echo $dia."-".$mes."-".$year ?></h4> 
                     </div>
                     
                    
