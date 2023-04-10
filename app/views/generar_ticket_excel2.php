@@ -100,7 +100,7 @@ body{
 
                 <div class="">
                     <div class="imagen-barras">
-                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioBarraExcel/68481";
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioBarraExcel/".$codigo;
                         echo '<img  src="'.$src1.'" alt="codigo barra">';
                         ?>
                         <h4><?php echo $codigo ?></h4>
@@ -114,7 +114,7 @@ body{
     </div>
     <div class="ticket-qr">
                     <div >
-                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/11115/12/01/23/silla";
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/".$codigo."/".$dia."/".$mes."/".$year."/".$descripcion;
                         echo '<img  class="imagen-qr" src="'.$src1.'" alt="codigo barra">';
                         ?>
                     </div>
