@@ -149,21 +149,31 @@ public function agregarinventario() {
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }
 
-    public function codigoQRExcel($codigo) {
+    public function codigoQRExcel($codigo,$dia,$mes,$year,$nombre) {
         
         $barcode = new \Com\Tecnick\Barcode\Barcode();
+        // Crea una lista de información
+        $infoList = array(
+            'Codigo' => $codigo,
+            'Fecha' => $dia."-".$mes."-".$year,
+            'Descripcion' => $nombre
+        );
+
+        $jsonInfo = json_encode($infoList);
 
         $bobj = $barcode->getBarcodeObj(
             'QRCODE,H',                     // Tipo de Barcode o Qr
-            $codigo,          // Datos
-            -2,                             // Width
-            -2,                             // Height
+            $jsonInfo,          // Datos
+            -1,                             // Width
+            -1,                             // Height
             'black',                        // Color del codigo
-            array(-2, -2, -2, -2)           // Padding
+            array(0, 0, 0, 0)           // Padding
             )->setBackgroundColor('white'); // Color de fondo
 
         $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
+        
         header('Content-Type: image/png');
+
         echo  $imageData;
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }

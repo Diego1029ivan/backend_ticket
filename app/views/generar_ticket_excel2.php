@@ -69,7 +69,12 @@ body{
     top:0;
     right:-10;
     width:40%;
+    
 
+}
+.imagen-qr{
+    width:50px;
+    height:50px;
 }
 
 
@@ -108,9 +113,9 @@ body{
 
     </div>
     <div class="ticket-qr">
-                    <div class="imagen-qr">
-                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/11115";
-                        echo '<img  src="'.$src1.'" alt="codigo barra">';
+                    <div >
+                        <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/11115/12/01/23/silla";
+                        echo '<img  class="imagen-qr" src="'.$src1.'" alt="codigo barra">';
                         ?>
                     </div>
     </div>
