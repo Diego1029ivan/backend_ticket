@@ -30,7 +30,7 @@ body{
 .ticket-title h1{
    padding-top:2%;
    font-size:4.5px;
-   
+
    text-align:center;
 
 
@@ -69,7 +69,7 @@ body{
     top:0;
     right:-10;
     width:40%;
-    
+
 
 }
 .imagen-qr{
@@ -104,8 +104,8 @@ body{
                         echo '<img  src="'.$src1.'" alt="codigo barra">';
                         ?>
                         <h4><?php echo $codigo ?></h4>
-                        
-                        <h4>F.A. <?php echo $dia."-".$mes."-".$year ?></h4> 
+
+                        <h4>F.A. <?php echo $dia."-".$mes."-".$year ?></h4>
                     </div>
 
 
@@ -115,7 +115,7 @@ body{
     <div class="ticket-qr">
                     <div >
                         <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/".$codigo."/".$dia."/".$mes."/".$year."/".$descripcion;
-                        echo '<img  class="imagen-qr" src="'.$src1.'" alt="codigo barra">';
+                        echo '<img  class="imagen-qr" src="'.$src1.'" alt="codigo barra1">';
                         ?>
                     </div>
     </div>
