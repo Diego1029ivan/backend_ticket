@@ -301,7 +301,7 @@ $dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
 
    
 
-    public function impresionExcel($codigo,$dia,$mes,$year){
+    public function impresionExcel($codigo,$dia,$mes,$year,$descripcion){
 
         $options = new Options();
         
@@ -317,7 +317,8 @@ $dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
         $html = view('generar_ticket_excel2',['codigo'=>$codigo,
                                                 'dia'=>$dia,
                                                 'mes'=>$mes,
-                                                'year'=>$year]);
+                                                'year'=>$year,
+                                                'descripcion'=>$descripcion]);
         $dompdf->loadHtml($html);
         $dompdf->render();
         header("Content-type: application/pdf");
