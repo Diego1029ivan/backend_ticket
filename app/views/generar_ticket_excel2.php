@@ -8,7 +8,7 @@
 
 <style>
     @page {
-    size: 10.5cm 2cm;
+    size: 10.5cm 2.4cm;
     orientation: landscape;
   }
     html {
@@ -28,37 +28,37 @@ body{
 
 }
 .ticket-title h1{
-   padding-top:2%;
-   font-size:4.5px;
-   
+   padding-top:4%;
+   font-size:6.5px;
+   width:100%;
+   margin-left:20px;
    text-align:center;
 
 
 }
 .img-log{
     padding-top:1%;
-   width:18px;
-   height:18px;
+   width:20px;
+   height:20px;
    position:absolute;
     top:0;
-    right:60%;
+    right:53%;
 
 }
-.imagen-barras{
-    margin-top:5px;
-}
+
 .imagen-barras h4{
     width:45%;
-    font-size:4px;
+    font-size:6px;
     margin-bottom:-2px;
-    padding-left:30%;
+    padding-left:50%;
     text-align:center;
     white-space: nowrap;
 
 }
 
 .imagen-barras img{
-    width:60%;
+    margin-top:9px;
+    width:100%;
     padding-left:25%;
 
 }
@@ -67,14 +67,14 @@ body{
     padding-left:10px;
     position:absolute;
     top:0;
-    right:-10;
+    right:-17;
     width:40%;
     
 
 }
 .imagen-qr{
-    width:50px;
-    height:50px;
+    width:75px;
+    height:75px;
 }
 
 
