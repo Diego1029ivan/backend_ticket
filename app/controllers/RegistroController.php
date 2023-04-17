@@ -30,9 +30,12 @@ class RegistroController extends Controller {
                                 'FECHA_DOCUMENTO_ADQUIS','VALOR_ADQUIS',
                                 'TIPO_CUENTA','NRO_CTA_CONTABLE',
                                 'NOM_EST_BIEN','CONDICION']);
-        
+
+        $codigo = Registro_bien::where('CODIGO_PATRIMONIAL', $objeto['CODIGO_PATRIMONIAL'])->first();
+
         //$bien->RUC_ENTIDAD = $objeto['RUC_ENTIDAD'];
         //$bien->ITEM=$objeto['NRO'];
+        if(!$codigo){
         $bien->CODIGO_PATRIMONIAL = $objeto['CODIGO_PATRIMONIAL'];
         $bien->DENOMINACION_BIEN = $objeto['DENOMINACION_BIEN'];
         //$bien->ACTOS_DE_ADQUISICION_QUE_GENERA_ALTA = $objeto['ACTOS_DE_ADQUISICION_QUE_GENERA_ALTA'];
@@ -48,15 +51,18 @@ class RegistroController extends Controller {
 
         $bien->CONDICION = $objeto['CONDICION'];
         $bien->save();
-
-        if (!$bien) {
-            return response()->json(["message" => "Error al guardar la lista de bienes"], 500);
-        }
-
         response()->json([
             "message" => "Tabla completa agregada",
             "bien" =>
              $bien]);
+        }
+        if (!$bien) {
+            return response()->json(["message" => "Error al guardar la lista de bienes"], 500);
+        }
+        if($codigo){
+            return response()->json(["codigo" => "mismo código"]);
+        }
+        
 
         // $json = json_encode($objeto);
         //$ruc = $objeto->RUC_ENTIDAD;
