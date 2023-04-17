@@ -150,7 +150,7 @@ public function agregarinventario() {
     }
 
     public function codigoQRExcel($codigo,$dia,$mes,$year,$nombre) {
-        
+
         $barcode = new \Com\Tecnick\Barcode\Barcode();
         // Crea una lista de información
         $infoList = array(
@@ -158,6 +158,7 @@ public function agregarinventario() {
             'Fecha' => $dia."-".$mes."-".$year,
             'Descripcion' => $nombre
         );
+      //convertir en
 
         $jsonInfo = json_encode($infoList);
 
@@ -171,7 +172,7 @@ public function agregarinventario() {
             )->setBackgroundColor('white'); // Color de fondo
 
         $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
-        
+
         header('Content-Type: image/png');
 
         echo  $imageData;
@@ -211,7 +212,7 @@ public function agregarinventario() {
         $dompdf = new Dompdf($options);
         $dompdf->setPaper(array(-1, -1, 108, 72), 'portrait');
         ob_start();
-        
+
         $html = view('generar_ticket_excel',['codigo'=>$codigo,
                                              'dia'=>$dia,
                                              'mes'=>$mes,
@@ -299,21 +300,21 @@ $dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
     }
 
 
-   
+
 
     public function impresionExcel($codigo,$dia,$mes,$year,$descripcion){
 
         $options = new Options();
-        
+
         $options->set('isRemoteEnabled',TRUE);
         $dompdf = new Dompdf($options);
         $dompdf->setPaper('10.5cm', '2cm', 'landscape');
 
-        
-        
-        
+
+
+
         ob_start();
-        
+
         $html = view('generar_ticket_excel2',['codigo'=>$codigo,
                                                 'dia'=>$dia,
                                                 'mes'=>$mes,
@@ -327,6 +328,6 @@ $dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
         echo $dompdf->output();
     }
 
-        
-    
+
+
 }

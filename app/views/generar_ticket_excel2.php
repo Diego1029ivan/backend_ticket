@@ -115,7 +115,7 @@ body{
     <div class="ticket-qr">
                     <div >
                         <?php $src1=$_ENV['APP_URL']."/backend_ticket/inventarioQRExcel/".$codigo."/".$dia."/".$mes."/".$year."/".$descripcion;
-                        echo '<img  class="imagen-qr" src="'.$src1.'" alt="codigo barra1">';
+                        echo '<img  class="imagen-qr" src="'.$src1.'" alt="codigo QR">';
                         ?>
                     </div>
     </div>
