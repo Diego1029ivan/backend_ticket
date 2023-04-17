@@ -112,8 +112,8 @@ public function agregarinventario() {
           $bobj = $barcode->getBarcodeObj(
               "PDF417", 			// Tipo de Barcode o Qr
               $codigo, 	// Datos
-              -2, 			// Width
-              -5, 			// Height
+              -3, 			// Width
+              -4, 			// Height
               'black', 		// Color del codigo
               array(0, 0, 0, 0)	// Padding
           );
@@ -308,7 +308,7 @@ $dompdf->stream("codigo-de-barras.pdf", array("Attachment" => false));
 
         $options->set('isRemoteEnabled',TRUE);
         $dompdf = new Dompdf($options);
-        $dompdf->setPaper('10.5cm', '2cm', 'landscape');
+        $dompdf->setPaper('10.5cm', '2.4cm', 'landscape');
 
 
 

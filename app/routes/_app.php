@@ -1,7 +1,7 @@
 <?php
 
 app()->get("/", function () {
-    response()->json(["message" => "Hola MUNDO"]);
+    response()->json(["message" => "No existe página"]);
 });
 app()->get("/inventario", "InventarioController@index");
 app()->get("/inventario/{id}", "InventarioController@inventarioid");
@@ -23,3 +23,8 @@ app()->get('/impresionExcel/{codigo}/{dia}/{mes}/{year}/{descripcion}', 'Inventa
 
 app()->get('/ticketapi/{codigo}', 'InventarioController@generarPdf');
 
+
+/*=======BIEN==========*/
+app()->get('/bien',"RegistroController@index");
+app()->get('/biencodigo/{codigo}',"RegistroController@codigoPatrimonial");
+app()->post('/agregar',"RegistroController@agregar");
