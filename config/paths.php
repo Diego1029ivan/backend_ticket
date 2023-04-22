@@ -27,5 +27,6 @@ return [
 
     'publicPath' => 'public',
 
-    'databaseStoragePath' => 'storage/app/db'
+    'databaseStoragePath' => 'storage/app/db',
+    'Authmiddleware' => 'app/middleware/Authmiddleware.php',
 ];

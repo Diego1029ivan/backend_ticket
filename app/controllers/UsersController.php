@@ -73,9 +73,8 @@ class UsersController extends Controller
         // login, so you don't have to call login again, unless you want
         // to. The 3rd parameter makes sure that the same username
         // and email can't be registered multiple times
-        $user = auth()->register($credentials, [
-            'username', 'email'
-        ]);
+        $user = auth()->register($credentials,[ 'username', 'email'
+        ]); //username and email are unique
 
         // throw an auth error if there's an issue
         if (!$user) {

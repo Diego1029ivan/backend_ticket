@@ -25,6 +25,15 @@ app()->get('/ticketapi/{codigo}', 'InventarioController@generarPdf');
 
 
 /*=======BIEN==========*/
-app()->get('/bien',"RegistroController@index");
+
 app()->get('/biencodigo/{codigo}',"RegistroController@codigoPatrimonial");
-app()->post('/agregar',"RegistroController@agregar");
+  app()->post('/agregar',"RegistroController@agregar");
+
+//auth
+app()->post('/register', 'UsersController@register');
+app()->post('/login', 'UsersController@login');
+// proteger rutas con middleware
+app()->get('/bien','AuthMiddleware', "RegistroController@index");
+
+// proteger rutas con middleware
+
