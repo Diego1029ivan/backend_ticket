@@ -28,3 +28,5 @@ app()->get('/ticketapi/{codigo}', 'InventarioController@generarPdf');
 app()->get('/bien',"RegistroController@index");
 app()->get('/biencodigo/{codigo}',"RegistroController@codigoPatrimonial");
 app()->post('/agregar',"RegistroController@agregar");
+app()->post('/imprimir',"RegistroController@imprimirSelect");
+app()->get("/inventarioQRExcel/{codigo}/{fecha}/{nombre}", "InventarioController@codigoQRselect");

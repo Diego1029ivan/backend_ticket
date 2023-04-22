@@ -178,6 +178,35 @@ public function agregarinventario() {
         //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
     }
 
+    public function codigoQRselect($codigo,$fecha,$nombre) {
+        
+        $barcode = new \Com\Tecnick\Barcode\Barcode();
+        // Crea una lista de información
+        $infoList = array(
+            'Codigo' => $codigo,
+            'Fecha' => $fecha,
+            'Descripcion' => $nombre
+        );
+
+        $jsonInfo = json_encode($infoList);
+
+        $bobj = $barcode->getBarcodeObj(
+            'QRCODE,H',                     // Tipo de Barcode o Qr
+            $jsonInfo,          // Datos
+            -1,                             // Width
+            -1,                             // Height
+            'black',                        // Color del codigo
+            array(0, 0, 0, 0)           // Padding
+            )->setBackgroundColor('white'); // Color de fondo
+
+        $imageData = $bobj->getPngData(); // Obtenemos el resultado en formato PNG
+        
+        header('Content-Type: image/png');
+
+        echo  $imageData;
+        //file_put_contents('qrcode.png', $imageData); // Guardamos el resultado
+    }
+
 
 /*======================Generar ticket PDF====================================*/
 
